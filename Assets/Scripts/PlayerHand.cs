@@ -10,7 +10,7 @@ public class PlayerHand : MonoBehaviour
 
     public float cardGapScalar;
     public float cardEffectTimeDelay = 0.3f;
-
+    public int maxHandSize = 7;
     public List<Card> cards = new();
 
     public void DiscardHand()
@@ -26,11 +26,18 @@ public class PlayerHand : MonoBehaviour
     {
         for (var i = 0; i < dataCards.Count; i++)
         {
-            var newCard = Instantiate(cardDisplayPrefab, deckSpawnPosition, Quaternion.identity, transform).GetComponent<Card>();
-            newCard.InitialiseCard(dataCards[i]);
-            newCard.GetComponent<PlayableCard>().SetRestPosition(GetCardRestPosition(i));
-            cards.Add(newCard);
-            EventManager.TriggerEvent(EventName.ON_PLAYER_DRAW_CARD.ToString(), new EventData().With(card: newCard, dataCard: newCard.dataCard));
+            if (cards.Count >= maxHandSize + 1)
+            {
+                BattleController.instance.discardPile.AddCard(dataCards[i]);
+            }
+            else
+            {
+                var newCard = Instantiate(cardDisplayPrefab, deckSpawnPosition, Quaternion.identity, transform).GetComponent<Card>();
+                newCard.InitialiseCard(dataCards[i]);
+                newCard.GetComponent<PlayableCard>().SetRestPosition(GetCardRestPosition(i));
+                cards.Add(newCard);
+                EventManager.TriggerEvent(EventName.ON_PLAYER_DRAW_CARD.ToString(), new EventData().With(card: newCard, dataCard: newCard.dataCard));   
+            }
         }
         RealignCards();
     }
@@ -79,8 +86,8 @@ public class PlayerHand : MonoBehaviour
     
     private Vector3 GetCardRestPosition(int cardIndex)
     {
-        var halfWayPoint = ((double)cards.Count() - 1) / 2;
-        return transform.position + new Vector3((float) (((double)cardIndex - halfWayPoint) * cardGapScalar / Mathf.Sqrt(cards.Count())), 0);
+        var halfWayPoint = ((double)cards.Count - 1) / 2;
+        return transform.position + new Vector3((float) ((cardIndex - halfWayPoint) * cardGapScalar / Mathf.Sqrt(cards.Count())), 0);
     }
     
     private void RealignCards()
