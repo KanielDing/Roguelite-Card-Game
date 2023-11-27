@@ -10,6 +10,7 @@ public abstract class CombatUnit : MonoBehaviour
     public TextMeshProUGUI armorText;
     public TextMeshProUGUI titleText;
     public GameObject textPopupPrefab;
+    public Vector3 popUpEffectPosition;
 
     protected int maxHp;
     protected int currentHp;
@@ -83,7 +84,7 @@ public abstract class CombatUnit : MonoBehaviour
 
     public void CreatePopUp(Color color, string text)
     {
-        TextPopup textPopup = Instantiate(textPopupPrefab, transform.position, Quaternion.identity, transform).GetComponent<TextPopup>();
+        TextPopup textPopup = Instantiate(textPopupPrefab, popUpEffectPosition, Quaternion.identity, transform).GetComponent<TextPopup>();
         textPopup.Initialise(color , text);
     }
 }
