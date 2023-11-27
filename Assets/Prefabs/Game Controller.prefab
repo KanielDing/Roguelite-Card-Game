@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7761428607756530341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7761428607756530339}
+  - component: {fileID: 7761428607756530338}
+  m_Layer: 0
+  m_Name: Game Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7761428607756530339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7761428607756530341}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7761428607756530338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7761428607756530341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f67bde4de2574e3ab33971323381892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounters:
+  - encounterType: 1
+    enemy: {fileID: 0}
+  - encounterType: 2
+    enemy: {fileID: 11400000, guid: a78a02b32e60e604daac95e4407f4bad, type: 2}
+  - encounterType: 0
+    enemy: {fileID: 11400000, guid: a78a02b32e60e604daac95e4407f4bad, type: 2}
+  - encounterType: 1
+    enemy: {fileID: 11400000, guid: 315010879527ac847a1983e869d8a1b4, type: 2}
+  - encounterType: 0
+    enemy: {fileID: 11400000, guid: 315010879527ac847a1983e869d8a1b4, type: 2}
+  - encounterType: 1
+    enemy: {fileID: 11400000, guid: 090e5aaca0e7f4d61b204ddcb8975536, type: 2}
+  - encounterType: 2
+    enemy: {fileID: 11400000, guid: 090e5aaca0e7f4d61b204ddcb8975536, type: 2}
+  - encounterType: 0
+    enemy: {fileID: 11400000, guid: 090e5aaca0e7f4d61b204ddcb8975536, type: 2}
+  - encounterType: 1
+    enemy: {fileID: 11400000, guid: ad155b41437844143bc1975273ce5d6a, type: 2}
+  - encounterType: 2
+    enemy: {fileID: 11400000, guid: ad155b41437844143bc1975273ce5d6a, type: 2}
+  - encounterType: 0
+    enemy: {fileID: 11400000, guid: ad155b41437844143bc1975273ce5d6a, type: 2}
+  currentEnemy: {fileID: 0}
