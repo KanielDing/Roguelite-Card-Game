@@ -43,20 +43,19 @@ public class CardEffect
                 BattleController.instance.combatPlayer.DealDamage(value);
                 break;
             case PlayerEffect.DAMAGE_PER_0_COST_CARD_IN_HAND:
-                int numZeroCostCardsInHand = 
-                    BattleController.instance.playerHand.cards
-                    .Where(card => card.dataCard.cost == 0).Count();
+                var numZeroCostCardsInHand = 
+                    BattleController.instance.playerHand.cards.Count(card => card.dataCard.cost == 0);
                 EnemyManager.instance.enemy.DealDamage(numZeroCostCardsInHand * value);
                 break;
             case PlayerEffect.REMOVE_ENEMY_ARMOR:
                 EnemyManager.instance.enemy.ResetArmor();
                 break;
             case PlayerEffect.DAMAGE_PER_CARD_IN_HAND:
-                int numCardsInHand = BattleController.instance.playerHand.cards.Count - 1;
+                var numCardsInHand = BattleController.instance.playerHand.cards.Count - 1;
                 EnemyManager.instance.enemy.DealDamage(numCardsInHand * value);
                 break;
             case PlayerEffect.HYPER_PULSE:
-                int numOfPulses = PlayerController.instance.deck.cards.Count(card => card.title.ToLower().Contains("pulse"));
+                var numOfPulses = PlayerController.instance.deck.cards.Count(card => card.title.ToLower().Contains("pulse"));
                 EnemyManager.instance.enemy.DealDamage(numOfPulses * value);
                 break;
             default:

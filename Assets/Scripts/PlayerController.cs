@@ -28,7 +28,7 @@ public class PlayerController: MonoBehaviour
 
     public void AddPassiveItem(GameObject passiveItem)
     {
-        PassiveItem newPassiveItem = Instantiate(passiveItem, transform).GetComponent<PassiveItem>();
+        var newPassiveItem = Instantiate(passiveItem, transform).GetComponent<PassiveItem>();
         items.Add(newPassiveItem);
         FindObjectOfType<ItemsView>()?.UpdateItemDisplays();
     }

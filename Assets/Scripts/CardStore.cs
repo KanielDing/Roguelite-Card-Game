@@ -5,23 +5,21 @@ using Random = System.Random;
 public class CardStore : MonoBehaviour
 {
     public List<DataCard> cards;
-    private static Random rng = new Random();
+    private static readonly Random Random = new();
 
     public void Shuffle()
     {
-        int n = cards.Count;  
+        var n = cards.Count;  
         while (n > 1) {  
             n--;  
-            int k = rng.Next(n + 1);  
-            DataCard value = cards[k];  
-            cards[k] = cards[n];  
-            cards[n] = value;  
+            var k = Random.Next(n + 1);  
+            (cards[k], cards[n]) = (cards[n], cards[k]);
         }
     }
 
     public DataCard GetRandomCard(bool removeCard = false)
     {
-        int randomCardIndex = rng.Next(cards.Count);
+        int randomCardIndex = Random.Next(cards.Count);
         DataCard randomCard = cards[randomCardIndex];
         if (removeCard)
         {

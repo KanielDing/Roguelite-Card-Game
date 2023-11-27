@@ -85,7 +85,7 @@ public class BattleController : MonoBehaviour
     public void DrawCardsFromDeckToHand(int numCards)
     {
         List<DataCard> drawnDataCards = new List<DataCard>();
-        for (int i = 0; i < numCards; i++)
+        for (var i = 0; i < numCards; i++)
         {
             if (deck.Count() == 0) ShuffleDiscardPileIntoDeck();
             if (deck.Count() != 0) drawnDataCards.Add(deck.GetTopCard(true));

@@ -6,7 +6,6 @@ using Random = UnityEngine.Random;
 public class EchoPulse : PassiveItem
 {
     public int echoDamage;
-
     private int counter = 3;
 
     private void OnPlayCard(EventData eventData)

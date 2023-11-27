@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class CombatPlayer : CombatUnit
 {
-
     public void OnBattleWin()
     {
         PlayerController.instance.currentHealth = currentHp;
@@ -13,6 +12,6 @@ public class CombatPlayer : CombatUnit
     {
         BattleController.instance.playerHand.cards.ForEach(card => card.GetComponent<PlayableCard>().FreezeAndDisableCard());
         yield return new WaitForSeconds(1);
-        GameController.instance.OnGameLoss();
+        GameController.OnGameLoss();
     }
 }

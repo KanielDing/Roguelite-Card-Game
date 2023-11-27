@@ -1,7 +1,4 @@
-﻿using System;
-using Unity.Mathematics;
-using Random = UnityEngine.Random;
-
+﻿
 public class RestingStar : PassiveItem
 {
     public int healPerEnergy;

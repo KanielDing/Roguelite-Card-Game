@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEditor;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,11 +8,9 @@ public class AddItemController : MonoBehaviour
     public int numItemChoices;
     public float itemGapScalar;
     public List<GameObject> possibleItems;
-
     public List<GameObject> randomItems;
 
-
-    void Start()
+    private void Start()
     {
         RemoveHeldItemsFromPossibleItems();
         GetRandomItems();
@@ -38,18 +33,16 @@ public class AddItemController : MonoBehaviour
     private void GetRandomItems()
     {
         if (numItemChoices > possibleItems.Count) numItemChoices = possibleItems.Count;
-        for (int itemChoice = 0; itemChoice < numItemChoices; itemChoice++)
+        for (var itemChoice = 0; itemChoice < numItemChoices; itemChoice++)
         {
             {
-                bool selectedUniqueItem = false;
+                var selectedUniqueItem = false;
                 while (selectedUniqueItem == false)
                 {
-                    GameObject randomItem = possibleItems[Random.Range(0, possibleItems.Count)];
-                    if (!randomItems.Contains(randomItem))
-                    {
-                        randomItems.Add(randomItem);
-                        selectedUniqueItem = true;
-                    }
+                    var randomItem = possibleItems[Random.Range(0, possibleItems.Count)];
+                    if (randomItems.Contains(randomItem)) continue;
+                    randomItems.Add(randomItem);
+                    selectedUniqueItem = true;
                 }
             }
         }
@@ -57,9 +50,9 @@ public class AddItemController : MonoBehaviour
 
     private void GenerateClickableItems()
     {
-        for (int i = 0; i < randomItems.Count; i++)
+        for (var i = 0; i < randomItems.Count; i++)
         {
-            Clickable clickableItem = Instantiate(clickableItemPrefab, GetCardRestPosition(i), Quaternion.identity, transform)
+            var clickableItem = Instantiate(clickableItemPrefab, GetCardRestPosition(i), Quaternion.identity, transform)
                 .GetComponent<Clickable>();
             clickableItem.GetComponent<ItemDisplay>().Initialise(randomItems[i].GetComponent<PassiveItem>());
             var index = i;
@@ -69,12 +62,12 @@ public class AddItemController : MonoBehaviour
 
     private Vector3 GetCardRestPosition(int cardIndex)
     {
-        double halfWayPoint = ((double) randomItems.Count - 1) / 2;
+        var halfWayPoint = ((double) randomItems.Count - 1) / 2;
         return transform.position +
                new Vector3((float) ((cardIndex - halfWayPoint) * itemGapScalar / Mathf.Sqrt(randomItems.Count)), 0);
     }
 
-    public void AddItem(GameObject clickableItem)
+    private void AddItem(GameObject clickableItem)
     {
         PlayerController.instance.AddPassiveItem(clickableItem);
         FinishEncounter();

@@ -7,9 +7,9 @@ public class ItemsView : MonoBehaviour
     public Vector2 itemDisplaySpacing;
     public GameObject itemDisplayPrefab;
     private List<PassiveItem> items;
-    private List<GameObject> itemDisplays = new List<GameObject>();
+    private readonly List<GameObject> itemDisplays = new();
     
-    void Start()
+    private void Start()
     {
         DrawItems();
     }
@@ -26,9 +26,9 @@ public class ItemsView : MonoBehaviour
     private void DrawItems()
     {
         items = PlayerController.instance.items;
-        for (int i = 0; i < items.Count; i++)
+        for (var i = 0; i < items.Count; i++)
         {
-            ItemDisplay itemDisplay = Instantiate(
+            var itemDisplay = Instantiate(
                     itemDisplayPrefab,
                     new Vector3(itemDisplayOffset.x + (i * itemDisplaySpacing.x), itemDisplayOffset.y + (i*itemDisplaySpacing.y), 0),
                     Quaternion.identity,
@@ -42,7 +42,7 @@ public class ItemsView : MonoBehaviour
 
     public void ActivateItem(PassiveItem passiveItem)
     {
-        int index = items.IndexOf(passiveItem);
+        var index = items.IndexOf(passiveItem);
         itemDisplays[index].GetComponent<Animator>().SetTrigger("Activate");
     }
 }

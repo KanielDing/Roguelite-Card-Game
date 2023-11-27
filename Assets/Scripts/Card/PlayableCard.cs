@@ -55,7 +55,7 @@ public class PlayableCard : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     private void MoveCardTowardsMouse()
     {
-        Vector3 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 targetPosition = Camera.main!.ScreenToWorldPoint(Input.mousePosition);
         var oldPosition = transform.position;
         targetPosition.z = oldPosition.z;
         transform.position = Vector3.Slerp(oldPosition, targetPosition, dragMoveScalar);

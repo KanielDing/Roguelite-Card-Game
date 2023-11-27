@@ -14,12 +14,12 @@ public abstract class CombatUnit : MonoBehaviour
 
     protected int maxHp;
     protected int currentHp;
-    protected int currentArmor = 0;
+    private int currentArmor;
     protected string title;
 
-    public void SetHpAndMaxHp(int hp, int maxHp)
+    public void SetHpAndMaxHp(int currentHp, int maxHp)
     {
-        currentHp = hp;
+        this.currentHp = currentHp;
         this.maxHp = maxHp;
         UpdateHealthBarAndArmorValue();
     }

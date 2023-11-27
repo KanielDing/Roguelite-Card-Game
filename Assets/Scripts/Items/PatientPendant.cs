@@ -1,8 +1,4 @@
-﻿using System;
-using Unity.Mathematics;
-using UnityEngine;
-using Random = UnityEngine.Random;
-
+﻿
 public class PatientPendant : PassiveItem
 {
     public int gainedBlock;

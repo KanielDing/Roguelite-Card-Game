@@ -2,7 +2,7 @@
 
 public class RemoveCardController : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
         FindObjectOfType<DeckView>().onCardClicked.AddListener(RemoveCardAndSwitchScene);
     }

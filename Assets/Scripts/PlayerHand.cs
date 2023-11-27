@@ -11,11 +11,11 @@ public class PlayerHand : MonoBehaviour
     public float cardGapScalar;
     public float cardEffectTimeDelay = 0.3f;
 
-    public List<Card> cards = new List<Card>();
+    public List<Card> cards = new();
 
     public void DiscardHand()
     {
-        for (int i = cards.Count() - 1; i > -1; i--)
+        for (var i = cards.Count() - 1; i > -1; i--)
         {
             DiscardCard(cards[i], false);
         }
@@ -24,9 +24,9 @@ public class PlayerHand : MonoBehaviour
 
     public void AddCards(List<DataCard> dataCards)
     {
-        for (int i = 0; i < dataCards.Count; i++)
+        for (var i = 0; i < dataCards.Count; i++)
         {
-            Card newCard = Instantiate(cardDisplayPrefab, deckSpawnPosition, Quaternion.identity, transform).GetComponent<Card>();
+            var newCard = Instantiate(cardDisplayPrefab, deckSpawnPosition, Quaternion.identity, transform).GetComponent<Card>();
             newCard.InitialiseCard(dataCards[i]);
             newCard.GetComponent<PlayableCard>().SetRestPosition(GetCardRestPosition(i));
             cards.Add(newCard);
@@ -37,13 +37,11 @@ public class PlayerHand : MonoBehaviour
 
     public void PlayCardInput(Card card)
     {
-        if (BattleController.instance.isPlayerTurn && BattleController.instance.HasEnergy(card.dataCard.cost))
-        {
-            BattleController.instance.SubtractEnergy(card.dataCard.cost);
-            card.GetComponent<PlayableCard>().FreezeAndDisableCard();
-            StartCoroutine(PlayCardEffect(card, 0));
-            EventManager.TriggerEvent(EventName.ON_PLAYER_PLAY_CARD.ToString(), new EventData().With(card: card, dataCard: card.dataCard));
-        }
+        if (!BattleController.instance.isPlayerTurn || !BattleController.instance.HasEnergy(card.dataCard.cost)) return;
+        BattleController.instance.SubtractEnergy(card.dataCard.cost);
+        card.GetComponent<PlayableCard>().FreezeAndDisableCard();
+        StartCoroutine(PlayCardEffect(card, 0));
+        EventManager.TriggerEvent(EventName.ON_PLAYER_PLAY_CARD.ToString(), new EventData().With(card: card, dataCard: card.dataCard));
     }
 
     private IEnumerator PlayCardEffect(Card card, int iterator)
@@ -81,13 +79,13 @@ public class PlayerHand : MonoBehaviour
     
     private Vector3 GetCardRestPosition(int cardIndex)
     {
-        double halfWayPoint = ((double)cards.Count() - 1) / 2;
+        var halfWayPoint = ((double)cards.Count() - 1) / 2;
         return transform.position + new Vector3((float) (((double)cardIndex - halfWayPoint) * cardGapScalar / Mathf.Sqrt(cards.Count())), 0);
     }
     
     private void RealignCards()
     {
-        for (int i = 0; i < cards.Count; i++)
+        for (var i = 0; i < cards.Count; i++)
         {
             cards[i].GetComponent<PlayableCard>().SetRestPosition(GetCardRestPosition(i));
         }

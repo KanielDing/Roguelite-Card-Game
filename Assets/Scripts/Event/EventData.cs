@@ -1,14 +1,10 @@
 ﻿public class EventData
 {
-    public Card card;
+    private Card card;
     public DataCard dataCard;
-    public int integer;
-    public string text;
-    public CombatUnit combatUnit;
-
-    public EventData()
-    {
-    }
+    private int integer;
+    private string text;
+    private CombatUnit combatUnit;
 
     public EventData With(
         Card card = null,

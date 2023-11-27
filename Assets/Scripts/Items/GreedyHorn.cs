@@ -1,6 +1,4 @@
-﻿using System;
-using Unity.Mathematics;
-using Random = UnityEngine.Random;
+﻿using Random = UnityEngine.Random;
 
 public class GreedyHorn : PassiveItem
 {
@@ -8,14 +6,10 @@ public class GreedyHorn : PassiveItem
 
     private void AttemptDuplicate(EventData eventData)
     {
-        if (eventData.dataCard.cost == 0)
-        {
-            if (duplicateChance > Random.value)
-            {
-                BattleController.instance.AddNewCardToDiscardPile(eventData.dataCard);
-                ActivateAnimation();
-            }
-        }
+        if (eventData.dataCard.cost != 0) return;
+        if (!(duplicateChance > Random.value)) return;
+        BattleController.instance.AddNewCardToDiscardPile(eventData.dataCard);
+        ActivateAnimation();
     }
     
     private void OnEnable()

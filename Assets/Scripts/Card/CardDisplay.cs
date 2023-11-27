@@ -16,12 +16,12 @@ public class CardDisplay : MonoBehaviour
 
     private bool beingDragged;
 
-    public void UpdateCardDisplay(DataCard initialiseDataCard)
+    public void UpdateCardDisplay(DataCard dataCard)
     {
-        cost = initialiseDataCard.cost;
-        title = initialiseDataCard.title;
-        description = initialiseDataCard.description;
-        image = initialiseDataCard.image;
+        cost = dataCard.cost;
+        title = dataCard.title;
+        description = dataCard.description;
+        image = dataCard.image;
         InitialiseCardDisplay();
     }
     

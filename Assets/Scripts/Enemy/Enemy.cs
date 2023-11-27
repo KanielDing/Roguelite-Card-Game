@@ -11,7 +11,7 @@ public class Enemy : CombatUnit
     public float waitTime = 1f;
 
     private List<EnemyTurn> enemyTurns;
-    private int turnCounter = 0;
+    private int turnCounter;
     
     private Sprite image;
 
@@ -20,7 +20,8 @@ public class Enemy : CombatUnit
         ResetArmor();
         StartCoroutine(PerformAction(0));
     }
-    public IEnumerator PerformAction(int actionInTurnCount)
+
+    private IEnumerator PerformAction(int actionInTurnCount)
     {
         yield return new WaitForSeconds(waitTime);
         if (actionInTurnCount >= enemyTurns[turnCounter].actions.Count)

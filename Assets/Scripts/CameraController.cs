@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,14 +20,13 @@ public class CameraController : MonoBehaviour
 
     private IEnumerator DoCameraShake(float duration, float magnitude)
     {
-        Vector3 originalPos = transform.position;
-
-        float elapsed = 0.0f;
+        var originalPos = transform.position;
+        var elapsed = 0.0f;
 
         while (elapsed < duration)
         {
-            float x = Random.Range(-1f, 1f) * magnitude * magnitudeScalar;
-            float y = Random.Range(-1f, 1f) * magnitude * magnitudeScalar;
+            var x = Random.Range(-1f, 1f) * magnitude * magnitudeScalar;
+            var y = Random.Range(-1f, 1f) * magnitude * magnitudeScalar;
             
             transform.localPosition = new Vector3(x, y, originalPos.y);
 

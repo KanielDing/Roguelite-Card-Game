@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        EncounterType nextEncounter = GetRandomEncounter();
+        var nextEncounter = GetRandomEncounter();
         LoadEncounter(nextEncounter);
     }
 
@@ -34,10 +34,9 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            float randomSceneFloat = Random.value;
+            var randomSceneFloat = Random.value;
             if (randomSceneFloat < 0.6) return EncounterType.CARD_CHOICE;
-            if (randomSceneFloat < 0.8) return EncounterType.CARD_REMOVE;
-            return EncounterType.ITEM_CHOICE;
+            return randomSceneFloat < 0.8 ? EncounterType.CARD_REMOVE : EncounterType.ITEM_CHOICE;
         }
     }
 
@@ -67,12 +66,12 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void OnGameLoss()
+    public static void OnGameLoss()
     {
         SceneManager.LoadScene("Lose Scene");
     }
 
-    public void OnGameWin()
+    private static void OnGameWin()
     {
         SceneManager.LoadScene("Win Scene");
     }
