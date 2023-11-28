@@ -416,7 +416,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 84}
-  m_SizeDelta: {x: 400, y: 150}
+  m_SizeDelta: {x: 500, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1108786614
 MonoBehaviour:
@@ -438,19 +438,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Roguelite
-
-    Card Game'
+  m_text: Cards
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -477,7 +475,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 0.69
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1243,7 +1241,7 @@ PrefabInstance:
     - target: {fileID: 7761428607756530338, guid: de51681ead60a43f38a05f144371a2d8,
         type: 3}
       propertyPath: enemyList.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7761428607756530338, guid: de51681ead60a43f38a05f144371a2d8,
         type: 3}
@@ -1254,35 +1252,41 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyList.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 3758bcd9b7d4e4343a9fd527782da91f,
+      objectReference: {fileID: 11400000, guid: aa0d6bb7eafee1a47b7b19e90ea0123a,
         type: 2}
     - target: {fileID: 7761428607756530338, guid: de51681ead60a43f38a05f144371a2d8,
         type: 3}
       propertyPath: enemyList.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: a78a02b32e60e604daac95e4407f4bad,
+      objectReference: {fileID: 11400000, guid: 3758bcd9b7d4e4343a9fd527782da91f,
         type: 2}
     - target: {fileID: 7761428607756530338, guid: de51681ead60a43f38a05f144371a2d8,
         type: 3}
       propertyPath: enemyList.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 315010879527ac847a1983e869d8a1b4,
+      objectReference: {fileID: 11400000, guid: a78a02b32e60e604daac95e4407f4bad,
         type: 2}
     - target: {fileID: 7761428607756530338, guid: de51681ead60a43f38a05f144371a2d8,
         type: 3}
       propertyPath: enemyList.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 3a6a800b3dc6d704585eefb7cf1a59e2,
+      objectReference: {fileID: 11400000, guid: 315010879527ac847a1983e869d8a1b4,
         type: 2}
     - target: {fileID: 7761428607756530338, guid: de51681ead60a43f38a05f144371a2d8,
         type: 3}
       propertyPath: enemyList.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 090e5aaca0e7f4d61b204ddcb8975536,
+      objectReference: {fileID: 11400000, guid: 3a6a800b3dc6d704585eefb7cf1a59e2,
         type: 2}
     - target: {fileID: 7761428607756530338, guid: de51681ead60a43f38a05f144371a2d8,
         type: 3}
       propertyPath: enemyList.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 090e5aaca0e7f4d61b204ddcb8975536,
+        type: 2}
+    - target: {fileID: 7761428607756530338, guid: de51681ead60a43f38a05f144371a2d8,
+        type: 3}
+      propertyPath: enemyList.Array.data[6]
       value: 
       objectReference: {fileID: 11400000, guid: ad155b41437844143bc1975273ce5d6a,
         type: 2}

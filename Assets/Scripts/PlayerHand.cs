@@ -36,7 +36,7 @@ public class PlayerHand : MonoBehaviour
                 newCard.InitialiseCard(dataCards[i]);
                 newCard.GetComponent<PlayableCard>().SetRestPosition(GetCardRestPosition(i));
                 cards.Add(newCard);
-                EventManager.TriggerEvent(EventName.ON_PLAYER_DRAW_CARD.ToString(), new EventData().With(card: newCard, dataCard: newCard.dataCard));   
+                EventManager.TriggerEvent(EventName.ON_PLAYER_DRAW_CARD.ToString(), new EventData().With(newCard, newCard.dataCard));   
             }
         }
         RealignCards();
@@ -48,7 +48,7 @@ public class PlayerHand : MonoBehaviour
         BattleController.instance.SubtractEnergy(card.dataCard.cost);
         card.GetComponent<PlayableCard>().FreezeAndDisableCard();
         StartCoroutine(PlayCardEffect(card, 0));
-        EventManager.TriggerEvent(EventName.ON_PLAYER_PLAY_CARD.ToString(), new EventData().With(card: card, dataCard: card.dataCard));
+        EventManager.TriggerEvent(EventName.ON_PLAYER_PLAY_CARD.ToString(), new EventData().With(card, card.dataCard));
     }
 
     private IEnumerator PlayCardEffect(Card card, int iterator)
@@ -71,7 +71,7 @@ public class PlayerHand : MonoBehaviour
         RemoveCardFromHand(card);
         if (played & card.dataCard.exhausts)
         {
-            EventManager.TriggerEvent(EventName.ON_PLAYER_EXHAUST_CARD.ToString(), new EventData().With(card: card, dataCard: card.dataCard));
+            EventManager.TriggerEvent(EventName.ON_PLAYER_EXHAUST_CARD.ToString(), new EventData().With(card, card.dataCard));
             return;
         }
         BattleController.instance.discardPile.AddCard(card.dataCard);
